@@ -44,8 +44,8 @@ git clone https://username@github.com/repo.git
 ### List branches
 
 ```sh
-git branch -a # remote + local
 git branch -l # local
+git branch -a # remote + local
 ```
 
 ### New branch
@@ -72,7 +72,7 @@ Locally
 
 ```sh
 git branch -m NEW-NAME               # current branch
-git branch -m OTHER-BRANCH NEW-NAME # other branch
+git branch -m OTHER-BRANCH NEW-NAME  # other branch
 ```
 
 ### Detail Info
@@ -111,7 +111,7 @@ git push --dry-run
 ### Delete
 
 ```sh
-git branch -D BRANCH-NAME            # Locally
+git branch -D BRANCH-NAME             # Locally
 git push origin --delete BRANCH-NAME  # Remote
 ```
 
@@ -157,9 +157,9 @@ git merge --abort
 ### Compare
 
 ```sh
-git diff branchA..branchB
-or current with remote
-git diff origin/main..feature/abc
+git diff BRANCH-A..BRANCH-B
+# fx changes made on BRANCH-A that are not on main
+git diff origin/main..BRANCH-A
 ```
 
 ### Fetch latest changes
@@ -172,7 +172,7 @@ git fetch -p
 
 ```sh
 git pull                                    # from origin
-git checkout OTHER-BRANCH -- FNAME(S)  # from other branch
+git checkout OTHER-BRANCH -- FNAME(S)       # from other branch
 ```
 
 ### List changes (fetch first):
@@ -287,8 +287,7 @@ git commit (same as above)
 git push
 ```
 
-- Pull command creates a merge (when using terminal, this opens a VIM Editor (ESC + ZZ to save and exit))
-- Commit will also open VIM editor when using terminal)
+Pull command creates a merge which opens a VIM Editor. Press ESC + ZZ to save and exit
 
 If push fails because of no remote branch yet:
 
@@ -361,14 +360,14 @@ All files:
 
 ```sh
 git stash                   # without description
-git stash push -m "MSG"   # with
+git stash push -m "MSG"     # with
 ```
 
 Specific file(s)
 
 ```sh
 git stash -- FNAME(S)               # without description
-git stash push -m "MSG" FNAME(S)  # with
+git stash push -m "MSG" FNAME(S)    # with
 ```
 
 ### Get from stash
@@ -377,14 +376,14 @@ Pull in changes, but keep stash
 
 ```sh
 git stash apply                  # latest stash
-git stash apply stash@{INDEX}  # specific stash
+git stash apply stash@{INDEX}    # specific stash
 ```
 
 Pull in changes, remove from stash
 
 ```sh
 git stash pop                   # latest stash
-git stash pop stash@{INDEX}   # specific stash
+git stash pop stash@{INDEX}     # specific stash
 ```
 
 Pull specific file(s) from stash
@@ -397,7 +396,7 @@ Remove stash
 
 ```sh
 git stash drop                   # latest stash
-git stash drop stash@{INDEX}   # specific stash
+git stash drop stash@{INDEX}     # specific stash
 ```
 
 Show stash changes
