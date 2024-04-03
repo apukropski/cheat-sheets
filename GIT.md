@@ -158,8 +158,7 @@ git merge --abort
 
 ```sh
 git diff BRANCH-A..BRANCH-B
-# fx changes made on BRANCH-A that are not on main
-git diff origin/main..BRANCH-A
+git diff BRANCH-A..BRANCH-B --stat          # file overview only
 ```
 
 ### Fetch latest changes
