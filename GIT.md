@@ -119,9 +119,9 @@ git push origin --delete BRANCH-NAME  # Remote
 
 Remove local branches that no longer exist on remote:
 
-1. Update local list of branches
+1. Update list of branches (fetches info from remote)
    ```sh
-   git fetch -p (updates list of remote branches)
+   git fetch -p
    ```
 2. Remove all local branches with status "merged"
    ```sh
@@ -185,12 +185,13 @@ git fetch -p && git status
 
 ```sh
 git checkout -- . FNAME(S)
+git reset --hard                           # resets all changes
 ```
 
 where:
 
 - `.` current branch (latest commit)
-- `FNAME(S)` from single file
+- `FNAME(S)` which file(s) to discard
 
 ## 🏋️ Push
 
@@ -215,12 +216,6 @@ Revert add
 git restore --staged
     . (for all)
     FNAME(S) (specific file(s))
-```
-
-or
-
-```sh
-git reset HEAD FNAME
 ```
 
 ### 2. Commit
