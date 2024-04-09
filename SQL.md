@@ -133,25 +133,28 @@ Order results with `ASC` and `DESC`
 ```sql
 select *
 from TABLE t
-order by COLUMN_A ASC, COLUMN_B DESC
+order by t.COLUMN_A ASC, t.COLUMN_B DESC
 ```
 
 #### Advanced: Date Queries
 
-- Get entries with ID that define the date range
+- Get entries with `FILTER_ID` that define the date range
 
 ```sql
+with vars as (
+   select cast(FILTER_ID as uuid) as filter_id
+)
 select *
-from TABLE t
-where t.id = 'ID'
+from TABLE t, vars
+where t.id = vars.filter_id
     and (t.created_at =
             (select max(t2.created_at)
             from TABLE t2
-            where t2.id = 'ID')
+            where t2.id = vars.filter_id)
         or t.created_at =
             (select min(t3.created_at)
             from TABLE t3
-            where t3.id = 'ID'))
+            where t3.id = vars.filter_id))
 ```
 
 ### Delete
